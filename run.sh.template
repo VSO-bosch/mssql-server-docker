@@ -1,0 +1,4 @@
+docker container stop mssql-server
+docker container rm mssql-server
+docker build --no-cache -t mssql-server .
+docker run --restart=always -it --name mssql-server -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=test' -p 1433:1433 -v mssql-volume:/var/opt/mssql  mssql-server
